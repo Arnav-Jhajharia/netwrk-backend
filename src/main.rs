@@ -19,8 +19,8 @@ async fn main() -> std::io::Result<()> {
 
     let mut ssl_builder = SslAcceptor::mozilla_intermediate(SslMethod::tls())?;
 
-    ssl_builder.set_private_key_file("./key.pem", SslFiletype::PEM)?;
-    ssl_builder.set_certificate_chain_file("./cert.pem")?;
+    ssl_builder.set_private_key_file("./dev/self-signed-sll/key.pem", SslFiletype::PEM)?;
+    ssl_builder.set_certificate_chain_file("./dev/self-signed-ssl/cert.pem")?;
     HttpServer::new(|| {
         App::new()
             .service(hello)
