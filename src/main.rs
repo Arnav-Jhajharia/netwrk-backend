@@ -14,6 +14,7 @@ async fn echo(req: HttpRequest, req_body:String) -> impl Responder {
 }
 
 
+
 #[actix_web::get("/")]
 async fn index() -> impl Responder {
     HttpResponse::Ok().body("Hello, world!")
