@@ -1,0 +1,10 @@
+appenders:
+  file:
+    kind: file
+    path: ".logs/server.2025-03-25.log"
+    encoder:
+      pattern: "{d(%d-%m-%Y@%H:%M:%S)} {l} [{t}] - {m}{n}"
+root:
+  level: info
+  appenders:
+    - file
