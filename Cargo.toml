@@ -7,3 +7,11 @@ edition = "2024"
 [dependencies]
 actix-web = { version = "4" ,features = ["openssl"] }
 openssl = "0.10.71"
+
+# Install openssl headers & library, just build tools will not work
+# on win, either use vcpkg (from ms) or directly clone the repo from ShiningLight
+# set the env-vars, OPENSSL_DIR = path/to/openssl/via/vcpkg
+# add it to the paths
+
+# Ensure that valid openssl self-signed cert.pem & key.pem are made, orelse it will fail to validate TLS
+# and shout

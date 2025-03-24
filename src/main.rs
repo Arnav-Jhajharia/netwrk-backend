@@ -1,5 +1,5 @@
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
-use openssl::ssl::{Ssl, SslAcceptor, SslFiletype, SslMethod};
+use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 #[get("/")]
 async fn hello() -> impl Responder {
     HttpResponse::Ok().body("Hello world!")
@@ -19,8 +19,8 @@ async fn main() -> std::io::Result<()> {
 
     let mut ssl_builder = SslAcceptor::mozilla_intermediate(SslMethod::tls())?;
 
-    ssl_builder.set_private_key_file("./dev/self-signed-sll/key.pem", SslFiletype::PEM)?;
-    ssl_builder.set_certificate_chain_file("./dev/self-signed-ssl/cert.pem")?;
+    ssl_builder.set_private_key_file("dev/self-signed-ssl/key.pem", SslFiletype::PEM)?;
+    ssl_builder.set_certificate_chain_file("dev/self-signed-ssl/cert.pem")?;
     HttpServer::new(|| {
         App::new()
             .service(hello)
