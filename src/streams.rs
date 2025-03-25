@@ -16,8 +16,5 @@ async fn streams (mut payload : web::Payload, _req : HttpRequest) -> HttpRespons
     }
     let bytes_vec = body.to_vec();
     let r = Reader::new(&(bytes_vec)[..]).unwrap();
-    for value  in r {
-        println!("{:#?}",value.unwrap());
-    }
     HttpResponse::Ok().body("Ok")
 }
