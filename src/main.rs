@@ -1,7 +1,6 @@
 
 mod streams;
-
-use actix_web::{ App, HttpResponse, HttpServer, Responder};
+use actix_web::{App, HttpResponse, HttpServer};
 use actix_web::middleware::Logger;
 use openssl::ssl::{SslAcceptor, SslFiletype, SslMethod};
 
@@ -21,7 +20,7 @@ async fn main() -> std::io::Result<()> {
     ssl_builder.set_certificate_chain_file("dev/self-signed-ssl/cert.pem")?;
     HttpServer::new(|| {
         App::new()
-            .wrap(Logger::default())
+            .wrap(Logger::new(r#"%a %{r}a "%r" %s %b "%{Referer}i" %Dms"#))
             .service(streams::streams)
             .service(index)
     })

@@ -1,10 +1,24 @@
 appenders:
-  file:
-    kind: file
-    path: ".logs/server.2025-03-25.log"
-    encoder:
-      pattern: "{d(%d-%m-%Y@%H:%M:%S)} {l} [{t}] - {m}{n}"
+#  file:
+#    kind: file
+#    path: ".logs/server.2025-03-25.log"
+#    encoder:
+#      pattern: "{d(%d-%m-%Y@%H:%M:%S)} {l} [{t}] - {m}{n}"
+  server_io:
+     kind: rolling_file
+     path: ".logs/server.log"
+     policy:
+       kind: compound
+       trigger:
+         kind: size
+         limit: 1kb
+       roller:
+         kind: fixed_window
+         base: 1
+         count: 17
+         pattern: ".logs/server.{}.log"
+
 root:
   level: info
   appenders:
-    - file
+    - server_io
