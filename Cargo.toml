@@ -12,10 +12,3 @@ apache-avro={version = "0.17.0", features = ["snappy"]}
 log4rs = { version = "1.3.0", features = ["background_rotation", "gzip"] }
 lru = "0.13.0"
 tokio = "1.44.1"
-# Install openssl headers & library, just build tools will not work
-# on win, either use vcpkg (from ms) or directly clone the repo from ShiningLight
-# set the env-vars, OPENSSL_DIR = path/to/openssl/via/vcpkg
-# add it to the paths
-
-# Ensure that valid openssl self-signed cert.pem & key.pem are made, orelse it will fail to validate TLS
-# and shout
